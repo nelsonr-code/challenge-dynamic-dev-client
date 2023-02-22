@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "pluging:react/jsx-runtime",
+    "prettier"
+  ],
+  "rules": {
+    // "prettier/prettier": [
+    //   "error",
+    //   {
+    //     "singleQuote": true,
+    //     "trailingComma": "es5",
+    //     "printWidth": 120,
+    //     "tabWidth": 2,
+    //     "semi": true,
+    //     "jsxBracketSameLine": true,
+    //     "arrowParens": "always"
+    //   }
+    // ]
+  }
+}
