@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
 import { Formik, Form } from 'formik'
-import AlbumService from '@services/albumService'
 import { useAlbum } from '@context/AlbumContext'
 import { useEffect, useState } from 'react'
 
@@ -13,15 +12,11 @@ function AlbumForm() {
     urlImage: '',
   })
   const { id } = useParams()
-  console.log(id)
 
   useEffect(() => {
-    console.log('useEffect')
     const load = async () => {
       if (id) {
-        console.log('edit')
         const album = await loadAlbum(id)
-        console.log('data:', album)
         setAlbum({
           name: album.data.name,
           artist: album.data.artist,
@@ -99,7 +94,9 @@ function AlbumForm() {
                     Year release
                   </label>
                   <input
-                    type='text'
+                    type='date'
+                    min={'2010-01-01'}
+                    max={'2021-12-31'}
                     name='yearRelease'
                     id='yearRelease'
                     placeholder='Year release'
@@ -130,7 +127,7 @@ function AlbumForm() {
                     to='/albums'
                     className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
                   >
-                    Cancel
+                    <button>Cancel</button>
                   </Link>
                   <button
                     type='submit'
