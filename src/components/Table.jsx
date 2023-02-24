@@ -6,28 +6,9 @@ import { useAlbum } from '@context/AlbumContext'
 
 export const Table = () => {
   const { albums, loadAlbums, deleteAlbum } = useAlbum()
-  console.log('albums:', albums)
-  // const [albumsData, setAlbumsData] = useState({
-  //   data: [],
-  //   loading: false,
-  //   error: null,
-  // })
 
   useEffect(() => {
     loadAlbums()
-    // setAlbums({ ...albums, loading: true })
-    // const getData = async () => {
-    //   try {
-    //     const response = await AlbumService.getAll()
-    //     setAlbums({ ...albums, data: response, loading: false })
-    //   } catch (error) {
-    //     setAlbums({ ...albums, error: error })
-    //   }
-    // }
-
-    // getData()
-
-    return () => {}
   }, [])
 
   const handleDelete = async (id) => {
