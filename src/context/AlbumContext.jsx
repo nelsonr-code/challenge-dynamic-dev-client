@@ -4,11 +4,17 @@ const AlbumContext = createContext()
 
 function AlbumProvider({ children }) {
   const [albums, setAlbums] = useState([])
+  const [error, setError] = useState(null)
 
   const createAlbum = async (album) => {
     try {
       const response = await AlbumService.create(album)
-      console.info(response)
+      if (response?.response) {
+        console.error(response.response.data.message)
+        setError(response.response.data.message)
+        // return response.response
+      }
+      // console.info(response.response)
     } catch (error) {
       console.error(error)
     }
@@ -16,8 +22,8 @@ function AlbumProvider({ children }) {
 
   const loadAlbums = async () => {
     const response = await AlbumService.getAll()
-    console.info(response)
     setAlbums(response)
+    setError(null)
   }
 
   const loadAlbum = async (id) => {
@@ -56,6 +62,7 @@ function AlbumProvider({ children }) {
     <AlbumContext.Provider
       value={{
         albums,
+        error,
         createAlbum,
         loadAlbums,
         loadAlbum,

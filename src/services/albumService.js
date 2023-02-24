@@ -9,7 +9,7 @@ export default class AlbumService {
 
       return response
     } catch (error) {
-      console.error(error)
+      // console.error(error)
       return error
     }
   }

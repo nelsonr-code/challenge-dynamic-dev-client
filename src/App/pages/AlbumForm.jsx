@@ -2,9 +2,10 @@ import { Link, useParams } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import { useAlbum } from '@context/AlbumContext'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function AlbumForm() {
-  const { createAlbum, loadAlbum, updateAlbum } = useAlbum()
+  const { error, createAlbum, loadAlbum, updateAlbum } = useAlbum()
   const [album, setAlbum] = useState({
     name: '',
     artist: '',
@@ -12,6 +13,8 @@ function AlbumForm() {
     urlImage: '',
   })
   const { id } = useParams()
+  const navigate = useNavigate()
+  console.log('error:', error)
 
   useEffect(() => {
     const load = async () => {
@@ -44,6 +47,7 @@ function AlbumForm() {
               if (id) {
                 console.log('edit')
                 await updateAlbum(id, values)
+                navigate('/albums')
               } else {
                 await createAlbum(values)
               }
@@ -124,6 +128,7 @@ function AlbumForm() {
                     onChange={handleChange}
                   />
                 </div>
+                {error && <p className='text-red-600'>{error}</p>}
                 <div className='flex justify-between mt-4'>
                   <Link
                     to='/albums'
