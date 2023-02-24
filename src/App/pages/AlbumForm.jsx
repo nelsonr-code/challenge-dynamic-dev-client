@@ -64,9 +64,10 @@ function AlbumForm() {
                     name='name'
                     id='name'
                     placeholder='Album name'
-                    className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                    required={true}
                     value={values.name}
                     onChange={handleChange}
+                    className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                   />
                 </div>
                 <div className='mb-4'>
@@ -81,9 +82,10 @@ function AlbumForm() {
                     name='artist'
                     id='artist'
                     placeholder='Artist name'
-                    className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                    required={true}
                     value={values.artist}
                     onChange={handleChange}
+                    className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                   />
                 </div>
                 <div className='mb-4'>
